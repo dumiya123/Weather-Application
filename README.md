@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Weather Dashboard Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application fetches and displays the latest weather information for various cities using the OpenWeatherMap API. The UI design provided is implemented with a responsive layout that adjusts to both desktop and mobile resolutions. This application is compatible with the latest versions of Chrome, Firefox, and Safari browsers.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Extracts city codes from a provided `cities.json` file.
+- Fetches latest weather information from the OpenWeatherMap API.
+- Displays weather information in a user-friendly and responsive UI.
+- Caches weather data to reduce API calls and improve performance.
+- Docker support for easy deployment.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js
+- npm (Node Package Manager)
+- OpenWeatherMap API Key (You need to register on [OpenWeatherMap](https://openweathermap.org) to get an API key)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yourusername/weather-dashboard.git
+    cd weather-dashboard
+    ```
 
-### `npm run build`
+2. Install the dependencies:
+    ```sh
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Obtain your API key from OpenWeatherMap and add it to a `.env` file:
+    ```sh
+    touch .env
+    echo "REACT_APP_API_KEY=your_api_key" >> .env
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Download the `cities.json` file from [this link](https://drive.google.com/file/d/1K0wfPEGxghzYO9OqbclsEFvc00XBWgVy/view?usp=sharing) and place it in the `src` directory of the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the Application
 
-### `npm run eject`
+1. Start the development server:
+    ```sh
+    npm start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Open your browser and navigate to `http://localhost:3000` to see the application in action.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- The application will automatically load city codes from the `cities.json` file.
+- It will then fetch the latest weather information for these cities using the OpenWeatherMap API.
+- The fetched data is displayed in a responsive UI.
+- Weather data is cached for 5 minutes to reduce API calls and improve performance.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Example
 
-## Learn More
+Here is a sample of the weather information fetched and displayed by the application:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```json
+{
+  "coord": { "lon": 37.62, "lat": 55.75 },
+  "sys": { "country": "RU", "sunrise": 1457582106, "sunset": 1457623444 },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "Sky is Clear",
+      "icon": "01d"
+    }
+  ],
+  "main": {
+    "temp": 7.75,
+    "pressure": 1026,
+    "humidity": 57,
+    "temp_min": 7,
+    "temp_max": 9
+  },
+  "visibility": 10000,
+  "wind": { "speed": 3, "deg": 130 },
+  "clouds": { "all": 0 },
+  "dt": 1457609400,
+  "id": 524901,
+  "name": "Moscow"
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
