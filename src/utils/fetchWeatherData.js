@@ -10,6 +10,7 @@ const fetchWeatherData = async (query) => {
   if (cache[cacheKey] && (Date.now() - cache[cacheKey].timestamp < 5 * 60 * 1000)) {
     return cache[cacheKey].data;
   }
+  
 
   const endpoint = typeof query === 'string'
     ? `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`
@@ -27,5 +28,6 @@ const fetchWeatherData = async (query) => {
 
   return result;
 };
+
 
 export default fetchWeatherData;
