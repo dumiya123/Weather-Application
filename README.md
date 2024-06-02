@@ -93,4 +93,4 @@ Here is a sample of the weather information fetched and displayed by the applica
 <img src="https://github.com/dumiya123/Weather-Application/blob/master/Screenshots/Screenshot%202024-06-02%20204419.png" alt="weatherapp" height="400" width="800">
 <br>
 <br>
-<img src="https://github.com/dumiya123/Weather-Application/blob/master/Screenshots/Screenshot%202024-06-02%20204419.png" alt="weatherapp" height="400" width="800">
+<img src="https://github.com/dumiya123/Weather-Application/blob/master/Screenshots/Screenshot%202024-06-02%20211117.png" alt="weatherapp" height="400" width="800">
