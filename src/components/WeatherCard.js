@@ -1,14 +1,18 @@
-import React from 'react';
-import cloudicon from '../images/cloud_bg.png';
-import backgroundImg from '../images/cloud_bg.png'; // Import your background image
+import React from "react";
+import cloudicon from "../images/cloud_bg.png";
+import backgroundImg from "../images/cloud_bg.png"; // Import your background image
 
 const WeatherCard = ({ weather, color }) => {
   if (!weather) {
-    return <div className="weather-card" style={{ borderRadius: '15px' }}>Loading...</div>; // or some placeholder UI
+    return (
+      <div className="weather-card" style={{ borderRadius: "15px" }}>
+        Loading...
+      </div>
+    ); // or some placeholder UI
   }
 
   const {
-    name = 'Unknown city',
+    name = "Unknown city",
     main = {},
     weather: weatherDetails = [],
     wind = {},
@@ -18,26 +22,35 @@ const WeatherCard = ({ weather, color }) => {
   } = weather;
 
   const {
-    temp = 'N/A',
-    temp_min = 'N/A',
-    temp_max = 'N/A',
-    pressure = 'N/A',
-    humidity = 'N/A',
+    temp = "N/A",
+    temp_min = "N/A",
+    temp_max = "N/A",
+    pressure = "N/A",
+    humidity = "N/A",
   } = main;
 
-  const weatherDescription = weatherDetails.length > 0 ? weatherDetails[0].description : 'N/A';
-  const windSpeed = wind.speed || 'N/A';
-  const windDeg = wind.deg || 'N/A';
-  const country = sys.country || 'N/A';
-  const sunrise = sys.sunrise || 'N/A';
-  const sunset = sys.sunset || 'N/A';
+  const weatherDescription =
+    weatherDetails.length > 0 ? weatherDetails[0].description : "N/A";
+  const windSpeed = wind.speed || "N/A";
+  const windDeg = wind.deg || "N/A";
+  const country = sys.country || "N/A";
+  const sunrise = sys.sunrise || "N/A";
+  const sunset = sys.sunset || "N/A";
 
   const formatTime = (timestamp) => {
-    return timestamp !== 'N/A' ? new Date(timestamp * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) : 'N/A';
+    return timestamp !== "N/A"
+      ? new Date(timestamp * 1000).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        })
+      : "N/A";
   };
 
   const formatDate = (timestamp) => {
-    return timestamp !== 'N/A' ? new Date(timestamp * 1000).toLocaleDateString() : 'N/A';
+    return timestamp !== "N/A"
+      ? new Date(timestamp * 1000).toLocaleDateString()
+      : "N/A";
   };
 
   const kelvinToCelsius = (tempInKelvin) => {
@@ -46,44 +59,76 @@ const WeatherCard = ({ weather, color }) => {
 
   const cardStyle = {
     backgroundColor: color,
-    color: '#fff', // Adjust for better readability
-    borderRadius: '15px', // Add this line to make borders round
-    display: 'flex',
-    flexDirection: 'column',
+    color: "#fff", // Adjust for better readability
+    borderRadius: "15px", // Add this line to make borders round
+    display: "flex",
+    flexDirection: "column",
   };
 
   const topSectionStyle = {
     backgroundImage: `url(${backgroundImg})`,
-    backgroundSize: 'cover',
-    borderRadius: '15px 15px 0 0',
-    padding: '16px',
+    backgroundSize: "cover",
+    borderRadius: "15px 15px 0 0",
+    padding: "16px",
+    display: "flex",
+    justifyContent: "space-between",
+    gap: "1px", // Set gap between the sections
   };
 
   const bottomSectionStyle = {
-    backgroundColor: 'gray',
-    padding: '16px',
-    borderRadius: '0 0 15px 15px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: '8px',
+    backgroundColor: "gray",
+    padding: "16px",
+    borderRadius: "0 0 15px 15px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "8px",
   };
 
   return (
     <div className="weather-card" style={cardStyle}>
       <div className="weather-card-top" style={topSectionStyle}>
-        <div className="weather-card-header">
-          <h2>{name}, {country}</h2>
-          <div>{formatDate(dt)}</div>
+        {/* Left Section */}
+        <div className="left-top-section" style={{ marginRight: "5px" }}>
+          {" "}
+          {/* Adjust margin-right */}
+          <div className="weather-card-header">
+            <h2>
+              {name},{country}{" "}
+            </h2>
+            <br></br>
+            {formatTime(dt)}, {formatDate(dt)}
+            <br></br>
+            <div>
+              <br></br>
+              {weatherDescription}
+            </div>
+            <br></br>
+          </div>
         </div>
-        <div className="weather-card-body">
+        {/* Add a vertical white line */}
+        <div
+          style={{
+            width: "1px",
+            height: "100%",
+            backgroundColor: "white",
+            marginLeft: "5px",
+            marginRight: "5px",
+          }}
+        ></div>{" "}
+        {/* Adjust margins */}
+        {/* Right Section */}
+        <div className="right-top-section" style={{ marginLeft: "5px" }}>
+          {" "}
+          {/* Adjust margin-left */}
           <div className="main-info">
             <div className="temperature">
               <h1>{kelvinToCelsius(temp).toFixed(1)}°C</h1>
-              <p>{weatherDescription}</p>
             </div>
             <div className="min-max-temp">
+              <br></br>
               <p>Temp Min: {kelvinToCelsius(temp_min).toFixed(1)}°C</p>
+              <br></br>
               <p>Temp Max: {kelvinToCelsius(temp_max).toFixed(1)}°C</p>
             </div>
           </div>
@@ -92,17 +137,25 @@ const WeatherCard = ({ weather, color }) => {
           </div>
         </div>
       </div>
+
       <div className="weather-card-bottom" style={bottomSectionStyle}>
         <div className="weather-details">
+          <br></br>
           <p>Pressure: {pressure} hPa</p>
+          <br></br>
           <p>Humidity: {humidity}%</p>
+          <br></br>
           <p>Visibility: {(visibility / 1000).toFixed(1)} km</p>
+          <br></br>
         </div>
         <div className="weather-wind">
-          <p>Wind: {windSpeed} m/s, {windDeg}  Degree</p>
+          <p>
+            {windSpeed} m/s, {windDeg} Degree
+          </p>
         </div>
         <div className="sun-times">
           <p>Sunrise: {formatTime(sunrise)}</p>
+          <br></br>
           <p>Sunset: {formatTime(sunset)}</p>
         </div>
       </div>

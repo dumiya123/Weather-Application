@@ -6,7 +6,7 @@
     text-align: center; /* Center the text */
     padding: 20px; /* Add some padding for aesthetics */
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     font-size: 16px; /* Adjust the font size as needed */
     position: fixed;
 

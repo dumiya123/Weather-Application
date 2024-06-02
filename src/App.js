@@ -69,8 +69,8 @@ const App = () => {
       <div>
         <input
           className="input"
-          type="text"
-          placeholder="Enter the city name"
+          type="  text"
+          placeholder="   Enter the city name"
           value={cityName}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
@@ -93,7 +93,7 @@ const App = () => {
       </div>
       <p></p>
       <p></p>
-      <div >
+      <div>
 
         <Footer/>
 
