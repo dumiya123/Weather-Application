@@ -1,25 +1,78 @@
 .weather-card {
-  background-color: #4A90E2;
-  border-radius: 10px;
-  color: #fff;
-  padding: 20px;
-  width: 300px;
-  margin: 10px;
-  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  padding: 0;
+  border-radius: 15px;
+  overflow: hidden; /* To ensure the rounded corners apply to the whole card */
 }
 
-.weather-card-upper {
+.weather-card-top {
   flex: 1;
+  display: flex;
+  flex-direction: row;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px 15px 0 0; /* Ensure only the top corners are rounded */
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
-.weather-card-lower {
-  background-color: #2C3E50;
-  border-radius: 10px;
-  padding: 10px;
-  margin-top: 10px;
+.left-top-section {
+  flex: 1;
+  padding: 16px;
+  border-right: 1px solid white; /* Add right border to create separation */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-top-section {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid white; /* Add right border to create separation */
+}
+
+.weather-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.weather-card-bottom {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: gray; /* Set the background color to gray */
+  border-radius: 0 0 15px 15px; /* Ensure only the bottom corners are rounded */
+  gap: 8px;
+}
+
+.weather-details,
+.weather-wind,
+.sun-times {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.weather-details {
+  border-right: 1px solid white; /* Add right border to create separation */
+}
+
+.weather-wind {
+  border-right: 1px solid white; /* Add right border to create separation */
 }
 
 .weather-card-header {
@@ -28,40 +81,15 @@
   align-items: center;
 }
 
-.weather-card-header h2 {
-  font-size: 1.2em;
-}
-
-.weather-card-main {
+.main-info {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+  flex-direction: column;
 }
 
 .temperature {
   font-size: 2em;
-  margin: 0;
-}
-
-.weather-icon img {
-  width: 50px;
-  height: 50px;
 }
 
 .min-max-temp {
-  font-size: 0.9em;
-}
-
-.weather-details p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.2em;
-  cursor: pointer;
+  margin-top: 8px;
 }

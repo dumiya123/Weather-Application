@@ -1,14 +1,25 @@
 /* src/App.css */
+* {
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 .app {
   text-align: center;
   background: url('../src/images/Header_bg.png') no-repeat center center fixed;
   background-size: cover;
   color: white;
-  min-height: 100vh;
-  padding: 20px;
+  min-height: 100vh; /* Ensure it covers the full height of the viewport */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
 
 .title {
@@ -19,61 +30,38 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100%; /* Ensure it doesn't cause horizontal overflow */
+  gap: 30px; /* Add a gap between the cards */
+  margin-bottom: 50px; /* Add margin to create space between cards and footer */
 }
 
-/* src/components/WeatherCard.css */
-.weather-card {
-  background: rgba(51, 51, 51, 0.8); /* Slight transparency */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin: 10px;
-  padding: 20px;
-  width: 200px;
-  text-align: left;
-}
-
-.weather-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-}
-
-.temperature {
-  font-size: 24px;
-}
-
-.weather-details {
-  margin-top: 10px;
-}
-
-@media (max-width: 600px) {
-  .weather-card {
-    width: 100%;
-  }
-}
-
-.input
-{
+.input {
   width: 300px;
   height: 40px;
   border-radius: 20px;
   margin-right: 6px;
-
 }
 
-.button
-{
+.button {
   width: 200px;
   height: 40px;
   border-radius: 20px;
-  background-color: blue;
+  background-color: mediumslateblue;
   color: azure;
+  font-size: 17px;
+  font-weight: bold;
+}
 
+.footer {
+  position: fixed;
+  padding: 20px;
+  width: 1700px; /* Adjust to full width */
+  padding: 20px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  bottom: 0;
+  position: relative;
+  text-align: center;
+  margin-top: 50px; /* Alternatively, add margin to the footer */
 }

@@ -3,6 +3,7 @@ import fetchWeatherData from "../src/utils/fetchWeatherData";
 import WeatherCard from "./components/WeatherCard";
 import Footer from "../src/components/footer";
 import "./App.css";
+import sunICon from "../src/images/sun.png"
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -60,7 +61,9 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1 className="title">Weather App</h1>
+      <h1 className="title">
+      <img src={sunICon} alt="Weather Icon" className="weather-icon" /> {/* Add the icon here */}
+        Weather App</h1>
       <br />
       <br />
       <div>
@@ -89,9 +92,14 @@ const App = () => {
         ))}
       </div>
       <p></p>
-      <div>
-        <Footer />
+      <p></p>
+      <div >
+
+        <Footer/>
+
+
       </div>
+
     </div>
   );
 };

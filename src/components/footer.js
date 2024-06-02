@@ -4,7 +4,11 @@ import "../components/footer"
 const Footer = () => {
   return (
     <div className="footer">
-      <p>2024 Etcetera Solutions</p>
+      <br></br>
+      <p className="font">2024 Etcetera Solutions</p>
+      <br></br>
+      <br></br>
+
     </div>
   );
 };
