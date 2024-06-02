@@ -3,6 +3,7 @@
   box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
   margin: 0;
   padding: 0;
+  
 }
 
 html, body {
@@ -55,7 +56,7 @@ html, body {
 .footer {
   position: fixed;
   padding: 20px;
-  width: 1700px; /* Adjust to full width */
+  width: 100vw; /* Adjust to full width */
   padding: 20px;
   height: 100px;
   background-color: black;

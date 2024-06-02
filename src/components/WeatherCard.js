@@ -63,6 +63,7 @@ const WeatherCard = ({ weather, color }) => {
     borderRadius: "15px", // Add this line to make borders round
     display: "flex",
     flexDirection: "column",
+    overflow: "hidden",
   };
 
   const topSectionStyle = {
@@ -94,6 +95,7 @@ const WeatherCard = ({ weather, color }) => {
           {/* Adjust margin-right */}
           <div className="weather-card-header">
             <h2>
+              <br></br>
               {name},{country}{" "}
             </h2>
             <br></br>
@@ -121,8 +123,9 @@ const WeatherCard = ({ weather, color }) => {
         <div className="right-top-section" style={{ marginLeft: "5px" }}>
           {" "}
           {/* Adjust margin-left */}
-          <div className="main-info">
+          <div className="main-info" style={{maxWidth: '300px'}}>
             <div className="temperature">
+              <br></br>
               <h1>{kelvinToCelsius(temp).toFixed(1)}°C</h1>
             </div>
             <div className="min-max-temp">
