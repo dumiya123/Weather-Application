@@ -1,0 +1,14 @@
+/* Footer.css */
+.footer {
+    background-color: black; /* Make the entire footer black */
+    color: white; /* Ensure the text is white for contrast */
+    text-align: center; /* Center the text */
+    padding: 20px; /* Add some padding for aesthetics */
+    position: fixed; /* Make sure the footer stays at the bottom */
+    bottom: 0;
+    width: 100%;
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+  
+  
+  
