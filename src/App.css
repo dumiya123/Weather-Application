@@ -52,4 +52,16 @@ html, body {
   font-weight: bold;
 }
 
-
+.footer {
+  position: fixed;
+  padding: 20px;
+  width: 1700px; /* Adjust to full width */
+  padding: 20px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  bottom: 0;
+  position: relative;
+  text-align: center;
+  margin-top: 50px; /* Alternatively, add margin to the footer */
+}
