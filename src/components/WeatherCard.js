@@ -48,10 +48,17 @@ const WeatherCard = ({ weather, color }) => {
   };
 
   const formatDate = (timestamp) => {
-    return timestamp !== "N/A"
-      ? new Date(timestamp * 1000).toLocaleDateString()
-      : "N/A";
+    if (timestamp !== "N/A") {
+      const date = new Date(timestamp * 1000);
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const month = monthNames[date.getMonth()];
+      const day = date.getDate();
+      return `${month} ${day}`;
+    } else {
+      return "N/A";
+    }
   };
+  
 
   const kelvinToCelsius = (tempInKelvin) => {
     return tempInKelvin - 273.15; // Convert Kelvin to Celsius
