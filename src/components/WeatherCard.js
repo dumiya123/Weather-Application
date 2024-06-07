@@ -128,6 +128,7 @@ const WeatherCard = ({ weather, color }) => {
         {/* Adjust margins */}
         {/* Right Section */}
         <div className="right-top-section" style={{ marginLeft: "5px" }}>
+          
           {" "}
           {/* Adjust margin-left */}
           <div className="main-info" style={{maxWidth: '300px'}}>
