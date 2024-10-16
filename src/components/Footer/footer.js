@@ -1,11 +1,11 @@
 import React from "react";
-import "../components/footer"
+import "./footer"
 
 const Footer = () => {
   return (
     <div className="footer">
       <br></br>
-      <p className="font">2024 Etcetera Solutions</p>
+      <p className="font"><b>2024 Etcetera Solutions</b></p>
       <br></br>
       <br></br>
 

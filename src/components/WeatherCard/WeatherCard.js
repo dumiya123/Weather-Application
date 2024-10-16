@@ -1,14 +1,11 @@
-import React from "react";
-import cloudicon from "../images/cloud_bg.png";
-import backgroundImg from "../images/cloud_bg.png"; // Import your background image
+import React, { useState } from "react";
+import cloudicon from "..//WeatherCard/images/cloud_bg.png";
 
-const WeatherCard = ({ weather, color }) => {
-  if (!weather) {
-    return (
-      <div className="weather-card" style={{ borderRadius: "15px" }}>
-        Loading...
-      </div>
-    ); // or some placeholder UI
+const WeatherCard = ({ weather, color, onCardClick }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!weather || !isVisible) {
+    return null;
   }
 
   const {
@@ -50,7 +47,10 @@ const WeatherCard = ({ weather, color }) => {
   const formatDate = (timestamp) => {
     if (timestamp !== "N/A") {
       const date = new Date(timestamp * 1000);
-      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const monthNames = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      ];
       const month = monthNames[date.getMonth()];
       const day = date.getDate();
       return `${month} ${day}`;
@@ -58,29 +58,31 @@ const WeatherCard = ({ weather, color }) => {
       return "N/A";
     }
   };
-  
 
   const kelvinToCelsius = (tempInKelvin) => {
-    return tempInKelvin - 273.15; // Convert Kelvin to Celsius
+    return tempInKelvin - 273.15;
   };
 
   const cardStyle = {
     backgroundColor: color,
-    color: "#fff", // Adjust for better readability
-    borderRadius: "15px", // Add this line to make borders round
+    color: "#fff",
+    borderRadius: "15px",
     display: "flex",
     flexDirection: "column",
     overflow: "hidden",
+    position: "relative",
+    cursor: "pointer" // Indicates that the card is clickable
   };
 
   const topSectionStyle = {
-    backgroundImage: `url(${backgroundImg})`,
+    backgroundImage: `url(${cloudicon})`,
     backgroundSize: "cover",
+    backgroundPosition: "center",
     borderRadius: "15px 15px 0 0",
     padding: "16px",
     display: "flex",
     justifyContent: "space-between",
-    gap: "1px", // Set gap between the sections
+    gap: "3px",
   };
 
   const bottomSectionStyle = {
@@ -93,80 +95,98 @@ const WeatherCard = ({ weather, color }) => {
     gap: "8px",
   };
 
+  const closeButtonStyle = {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    backgroundColor: "transparent",
+    color: "#fff",
+    border: "none",
+    cursor: "pointer",
+    fontSize: "18px",
+  };
+
   return (
-    <div className="weather-card" style={cardStyle}>
+    <div
+      className="weather-card"
+      style={cardStyle}
+      onClick={onCardClick} // Trigger click event when the card is clicked
+    >
+      <button
+        style={closeButtonStyle}
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent the click from triggering the card's onClick
+          setIsVisible(false);
+        }}
+      >
+        X
+      </button>
+
       <div className="weather-card-top" style={topSectionStyle}>
-        {/* Left Section */}
         <div className="left-top-section" style={{ marginRight: "5px" }}>
-          {" "}
-          {/* Adjust margin-right */}
           <div className="weather-card-header">
             <h2>
-              <br></br>
-              {name},{country}{" "}
+              <br />
+              {name}, {country}
             </h2>
-            <br></br>
+            <br />
             {formatTime(dt)}, {formatDate(dt)}
-            <br></br>
+            <br />
             <div>
-              <br></br>
+              <br />
               {weatherDescription}
             </div>
-            <br></br>
+            <br />
           </div>
         </div>
-        {/* Add a vertical white line */}
-        <div
-          style={{
-            width: "1px",
-            height: "100%",
-            backgroundColor: "white",
-            marginLeft: "5px",
-            marginRight: "5px",
-          }}
-        ></div>{" "}
-        {/* Adjust margins */}
-        {/* Right Section */}
+
         <div className="right-top-section" style={{ marginLeft: "5px" }}>
-          
-          {" "}
-          {/* Adjust margin-left */}
-          <div className="main-info" style={{maxWidth: '300px'}}>
+          <div className="main-info" style={{ maxWidth: "300px" }}>
             <div className="temperature">
-              <br></br>
-              <h1>{kelvinToCelsius(temp).toFixed(1)}°C</h1>
+              <br />
+              <h1>{kelvinToCelsius(temp).toFixed(1)} °C</h1>
             </div>
             <div className="min-max-temp">
-              <br></br>
-              <p>Temp Min: {kelvinToCelsius(temp_min).toFixed(1)}°C</p>
-              <br></br>
-              <p>Temp Max: {kelvinToCelsius(temp_max).toFixed(1)}°C</p>
+              <br />
+              <p>Temp Min : {kelvinToCelsius(temp_min).toFixed(1)}°C</p>
+              <br />
+              <p>Temp Max : {kelvinToCelsius(temp_max).toFixed(1)}°C</p>
             </div>
-          </div>
-          <div className="weather-icon">
-            <img src={cloudicon} alt="Weather Icon" />
           </div>
         </div>
       </div>
 
       <div className="weather-card-bottom" style={bottomSectionStyle}>
-        <div className="weather-details">
-          <br></br>
+        <div className="weather-details" style={{ flex: 1 }}>
           <p>Pressure: {pressure} hPa</p>
-          <br></br>
           <p>Humidity: {humidity}%</p>
-          <br></br>
           <p>Visibility: {(visibility / 1000).toFixed(1)} km</p>
-          <br></br>
         </div>
-        <div className="weather-wind">
+
+        <div
+          style={{
+            width: "1px",
+            height: "40px",
+            backgroundColor: "white",
+          }}
+        ></div>
+
+        <div className="weather-wind" style={{ flex: 1, textAlign: "center" }}>
           <p>
             {windSpeed} m/s, {windDeg} Degree
           </p>
         </div>
-        <div className="sun-times">
+
+        <div
+          style={{
+            width: "1px",
+            height: "40px",
+            backgroundColor: "white",
+          }}
+        ></div>
+
+        <div className="sun-times" style={{ flex: 1, textAlign: "right" }}>
           <p>Sunrise: {formatTime(sunrise)}</p>
-          <br></br>
           <p>Sunset: {formatTime(sunset)}</p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import fetchWeatherData from "../src/utils/fetchWeatherData";
-import WeatherCard from "./components/WeatherCard";
-import Footer from "../src/components/footer";
+import WeatherCard from "./components/WeatherCard/WeatherCard";
+import Footer from "./components/Footer/footer";
 import "./App.css";
 import sunICon from "../src/images/sun.png"
 
@@ -69,8 +69,8 @@ const App = () => {
       <div>
         <input
           className="input"
-          type="  text"
-          placeholder="   Enter the city name"
+          type="text"
+          placeholder="Enter a city"
           value={cityName}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
@@ -93,11 +93,8 @@ const App = () => {
       </div>
       <p></p>
       <p></p>
-      <div>
-
+      <div className="footer">
         <Footer/>
-
-
       </div>
 
     </div>
