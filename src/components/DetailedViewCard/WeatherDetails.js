@@ -1,4 +1,5 @@
 import React from 'react';
+import './WeatherDetails.css'; // Update the path as necessary
 import cloudIcon from '../WeatherCard/images/cloud_bg.png'; // Update the path as necessary
 
 const WeatherDetails = ({ weather, onBack }) => {
@@ -45,48 +46,19 @@ const WeatherDetails = ({ weather, onBack }) => {
     return tempInKelvin - 273.15; // Convert Kelvin to Celsius
   };
 
-  const detailsCardStyle = {
-    backgroundColor: "#3a86ff", // Adjust this based on your theme
-    color: "#fff",
-    borderRadius: "15px",
-    padding: "20px",
-    maxWidth: "600px",
-    margin: "auto",
-    textAlign: "center",
-    position: "relative",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-  };
-
-  const backButtonStyle = {
-    position: "absolute",
-    top: "10px",
-    left: "10px",
-    backgroundColor: "transparent",
-    color: "#fff",
-    border: "none",
-    cursor: "pointer",
-    fontSize: "20px",
-  };
-
-  const iconStyle = {
-    width: "50px",
-    height: "50px",
-    marginBottom: "10px",
-  };
-
   return (
-    <div style={detailsCardStyle}>
-      <button style={backButtonStyle} onClick={onBack}>
+    <div className="details-card">
+      <button className="back-button" onClick={onBack}>
         ←
       </button>
-      <img src={cloudIcon} alt="Weather Icon" style={iconStyle} />
+      <img src={cloudIcon} alt="Weather Icon" className="icon" />
       <h2>{name}, {country}</h2>
       <p>{formatTime(dt)}, {new Date(dt * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</p>
       <h3>{weatherDescription}</h3>
       <h1>{kelvinToCelsius(temp).toFixed(1)}°C</h1>
       <p>Temp Min: {kelvinToCelsius(temp_min).toFixed(1)}°C | Temp Max: {kelvinToCelsius(temp_max).toFixed(1)}°C</p>
       
-      <div style={{ display: "flex", justifyContent: "space-around", marginTop: "20px", backgroundColor: "#2d3345", padding: "15px", borderRadius: "10px" }}>
+      <div className="weather-info">
         <div>
           <p>Pressure: {pressure} hPa</p>
           <p>Humidity: {humidity}%</p>
@@ -94,7 +66,7 @@ const WeatherDetails = ({ weather, onBack }) => {
         </div>
         <div>
           <p>{windSpeed} m/s {windDeg}°</p>
-          <img src={cloudIcon} alt="Wind Icon" style={iconStyle} /> {/* Replace with wind icon */}
+          <img src={cloudIcon} alt="Wind Icon" className="icon" /> {/* Replace with wind icon */}
         </div>
         <div>
           <p>Sunrise: {formatTime(sunrise)}</p>
